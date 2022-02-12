@@ -33,8 +33,10 @@ public class Account {
 	}
 
 	public void deposit(double amount) {
-		amount = amount - amount * DEPOSIT_FEE_PERCENTAGE;
-		balance = balance + amount;
+		if(amount > 0) {
+			amount -= (amount * DEPOSIT_FEE_PERCENTAGE);
+			balance += amount;
+		}
 	}
 
 	public void withdraw(double amount) {
@@ -43,7 +45,7 @@ public class Account {
 		balance -= amount;
 	}
 
-	public Double fullWithdraw() {
+	public double fullWithdraw() {
 		double aux = balance;
 		balance = 0.0;
 		return aux;
